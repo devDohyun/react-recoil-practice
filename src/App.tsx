@@ -1,5 +1,11 @@
+import ServiceRoutes from './components/Routes'
+
 const App = () => {
-  return <>test</>
+  return (
+    <>
+      <ServiceRoutes />
+    </>
+  )
 }
 
 export default App
