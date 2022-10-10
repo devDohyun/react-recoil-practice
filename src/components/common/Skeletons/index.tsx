@@ -2,6 +2,8 @@ import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import colors from '../../../styles/palette'
 
+type TStyledSkeleton = Partial<Pick<CSSStyleDeclaration, 'width' | 'height' | 'marginBottom' | 'marginRight'>>
+
 const Animation = keyframes`
   0% {
     left: 0;
@@ -11,12 +13,15 @@ const Animation = keyframes`
   }
 `
 
-const StyledSkeleton = styled.div<{ width: string; height: string }>`
+const StyledSkeleton = styled.div<TStyledSkeleton>`
   position: relative;
 
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   background-color: ${colors.grey100};
+
+  margin-bottom: ${({ marginBottom }) => marginBottom ?? '0'};
+  margin-right: ${({ marginRight }) => marginRight ?? '0'};
 
   overflow: hidden;
 
