@@ -1,14 +1,19 @@
 import styled from '@emotion/styled'
 import colors from '../../../styles/palette'
 import { fontSize } from '../../../styles/typography'
+import { TProduct } from '../../../types'
 
-const ProductItem = () => {
+const ProductListItem = ({ item }: { item: TProduct }) => {
+  const shippingDate = new Date(item.shipping).toLocaleDateString('ko')
+
   return (
     <StyledContainer>
-      <StyledThumb src="/product-1.png" />
+      <StyledThumb src={item.img} />
       <StyledText>
-        <StyledName>애플 워치</StyledName>
-        <StyledAdditional>재고 5개 남음 · 2022/11/06 배송</StyledAdditional>
+        <StyledName>{item.name}</StyledName>
+        <StyledAdditional>
+          재고 {item.stock}개 남음 · {shippingDate} 배송
+        </StyledAdditional>
       </StyledText>
     </StyledContainer>
   )
@@ -41,4 +46,4 @@ const StyledAdditional = styled.div`
   color: ${colors.grey500};
 `
 
-export default ProductItem
+export default ProductListItem
