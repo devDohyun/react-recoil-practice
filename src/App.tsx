@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import PageHome from './pages/Home'
+import PageNotFound from './pages/NotFound'
 import PageProductDetail from './pages/Product/Detail'
 
 const App = () => {
@@ -17,6 +18,14 @@ const App = () => {
           element: <PageProductDetail />,
         },
       ],
+    },
+    {
+      path: '/not-found',
+      element: <PageNotFound />,
+    },
+    {
+      path: '*',
+      element: <PageNotFound />,
     },
   ])
 
