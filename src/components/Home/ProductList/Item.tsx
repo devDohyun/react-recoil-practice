@@ -1,10 +1,11 @@
 import styled from '@emotion/styled'
+import { getDateString } from '../../../core/utils'
 import colors from '../../../styles/palette'
 import { fontSize } from '../../../styles/typography'
 import { TProduct } from '../../../types'
 
 const ProductListItem = ({ item }: { item: TProduct }) => {
-  const shippingDate = new Date(item.shipping).toLocaleDateString('ko')
+  const shippingDate = getDateString(item.shipping)
 
   return (
     <StyledContainer>
