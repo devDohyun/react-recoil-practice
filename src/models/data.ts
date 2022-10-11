@@ -37,7 +37,7 @@ export const products: TProduct[] = [
     name: 'Apple watch',
     price: 599000,
     content,
-    shipping: 1665438745200,
+    shipping: 1665538745200,
     stock: 81,
   },
   {
@@ -46,7 +46,7 @@ export const products: TProduct[] = [
     name: 'Apple watch',
     price: 599000,
     content,
-    shipping: 1665438745200,
+    shipping: 1665738745200,
     stock: 23,
   },
   {
@@ -55,7 +55,7 @@ export const products: TProduct[] = [
     name: 'Apple watch',
     price: 599000,
     content,
-    shipping: 1665438745200,
+    shipping: 1665238745200,
     stock: 41,
   },
   {
@@ -73,7 +73,7 @@ export const products: TProduct[] = [
     name: 'Apple watch',
     price: 599000,
     content,
-    shipping: 1665438745200,
+    shipping: 1665938745200,
     stock: 25,
   },
   {
@@ -82,7 +82,7 @@ export const products: TProduct[] = [
     name: 'Apple watch',
     price: 599000,
     content,
-    shipping: 1665438745200,
+    shipping: 1665838745200,
     stock: 31,
   },
   {
@@ -91,7 +91,7 @@ export const products: TProduct[] = [
     name: 'Apple watch',
     price: 599000,
     content,
-    shipping: 1665438745200,
+    shipping: 1665138745200,
     stock: 35,
   },
   {
@@ -100,7 +100,7 @@ export const products: TProduct[] = [
     name: 'Apple watch',
     price: 599000,
     content,
-    shipping: 1665438745200,
+    shipping: 1666238745200,
     stock: 22,
   },
 ]
