@@ -8,6 +8,25 @@ import colors from '../../styles/palette'
 import { fontSize } from '../../styles/typography'
 import { TProduct } from '../../types'
 import BottomCTAButton from '../common/BottomCTAButton'
+import { SkeletonSquare } from '../common/Skeletons'
+
+const ProductInfoFallback = () => (
+  <>
+    <SkeletonSquare width="100vw" height="100vw" />
+    <StyledArticle>
+      <SkeletonSquare width="250px" height="40px" marginBottom="10px" />
+      <SkeletonSquare width="300px" height="20px" marginBottom="20px" />
+      <SkeletonSquare width="150px" height="20px" marginBottom="20px" />
+      <SkeletonSquare width="90vw" height="20px" marginBottom="20px" />
+      <SkeletonSquare width="85vw" height="20px" marginBottom="20px" />
+      <SkeletonSquare width="80vw" height="20px" marginBottom="20px" />
+      <SkeletonSquare width="90vw" height="20px" marginBottom="20px" />
+      <SkeletonSquare width="65vw" height="20px" marginBottom="20px" />
+      <SkeletonSquare width="90vw" height="20px" marginBottom="20px" />
+      <SkeletonSquare width="65vw" height="20px" marginBottom="20px" />
+    </StyledArticle>
+  </>
+)
 
 const ProductInfo = ({ productId }: { productId: TProduct['id'] }) => {
   const productItem = useRecoilValue(productDetailQuery(productId))
@@ -36,7 +55,7 @@ const ProductDetail = ({ productId }: { productId: TProduct['id'] }) => {
 
   return (
     <StyledContainer>
-      <Suspense>
+      <Suspense fallback={<ProductInfoFallback />}>
         <ProductInfo productId={productId} />
       </Suspense>
       <BottomCTAButton onClick={() => router.push(`/order/${productId}`)}>구매하기</BottomCTAButton>
