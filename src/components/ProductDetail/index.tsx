@@ -24,7 +24,7 @@ const ProductInfo = ({ productId }: { productId: TProduct['id'] }) => {
         <StyledAdditional>
           재고 {productItem.stock}개 남음 · {shippingDate} 배송
         </StyledAdditional>
-        <StyledPrice>₩ {formatNumber(productItem.price)}부터</StyledPrice>
+        <StyledPrice>₩{formatNumber(productItem.price)}부터</StyledPrice>
         <StyledContent dangerouslySetInnerHTML={{ __html: productItem.content }}></StyledContent>
       </StyledArticle>
     </>
