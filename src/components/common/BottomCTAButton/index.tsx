@@ -16,7 +16,7 @@ const StyledContainer = styled.div`
 
   width: 100%;
 
-  padding: 20px;
+  padding: 10px 20px;
 `
 const StyledButton = styled.button`
   width: 100%;
