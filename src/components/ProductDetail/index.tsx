@@ -69,6 +69,7 @@ const StyledContainer = styled.div`
 
 const StyledImage = styled.img`
   width: 100%;
+  min-height: 100vw;
 `
 const StyledArticle = styled.div`
   padding: 20px;
