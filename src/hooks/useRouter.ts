@@ -9,6 +9,9 @@ const useRouter = () => {
       back() {
         navigate(-1)
       },
+      repalce(pathname: string) {
+        navigate({ pathname }, { replace: true })
+      },
       push(pathname: string) {
         navigate({ pathname })
       },
