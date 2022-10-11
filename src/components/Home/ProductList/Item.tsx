@@ -24,7 +24,7 @@ const StyledContainer = styled.div`
   display: flex;
   align-items: center;
 
-  padding: 20px;
+  padding: 20px 0;
 `
 const StyledThumb = styled.img`
   width: 75px;
