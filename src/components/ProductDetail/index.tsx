@@ -1,41 +1,45 @@
 import styled from '@emotion/styled'
+import { Suspense } from 'react'
+import { useRecoilValue } from 'recoil'
+import { formatNumber, getDateString } from '../../core/utils'
 import useRouter from '../../hooks/useRouter'
+import { productDetailQuery } from '../../store'
 import colors from '../../styles/palette'
 import { fontSize } from '../../styles/typography'
+import { TProduct } from '../../types'
 import BottomCTAButton from '../common/BottomCTAButton'
 
-const ProductDetail = () => {
+const ProductInfo = ({ productId }: { productId: TProduct['id'] }) => {
+  const productItem = useRecoilValue(productDetailQuery(productId))
+
+  if (!productItem) return <></>
+
+  const shippingDate = getDateString(productItem.shipping)
+
+  return (
+    <>
+      <StyledImage src={productItem.img} alt="product" />
+      <StyledArticle>
+        <StyledName>{productItem.name}</StyledName>
+        <StyledAdditional>
+          재고 {productItem.stock}개 남음 · {shippingDate} 배송
+        </StyledAdditional>
+        <StyledPrice>₩ {formatNumber(productItem.price)}부터</StyledPrice>
+        <StyledContent dangerouslySetInnerHTML={{ __html: productItem.content }}></StyledContent>
+      </StyledArticle>
+    </>
+  )
+}
+
+const ProductDetail = ({ productId }: { productId: TProduct['id'] }) => {
   const router = useRouter()
 
   return (
     <StyledContainer>
-      <StyledImage src="/product-1.png" alt="product" />
-      <StyledArticle>
-        <StyledName>Apple watch</StyledName>
-        <StyledAdditional>재고 5개 남음 · 2022/11/06 배송</StyledAdditional>
-        <StyledPrice>₩ 599,000부터</StyledPrice>
-        <StyledContent>
-          Atoms는 상태의 단위이며, 업데이트와 구독이 가능하다.
-          <br />
-          atom이 업데이트되면 각각의 구독된 컴포넌트는 새로운 값을 반영하여 다시 렌더링 된다.
-          <br />
-          atoms는 런타임에서 생성될 수도 있다.
-          <br />
-          Atoms는 React의 로컬 컴포넌트의 상태 대신 사용할 수 있다.
-          <br />
-          동일한 atom이 여러 컴포넌트에서 사용되는 경우 모든 컴포넌트는 상태를 공유한다.
-          <br />
-          <br />
-          Atoms는 atom함수를 사용해 생성한다.
-          <br />
-          <br />
-          Atoms는 디버깅, 지속성 및 모든 atoms의 map을 볼 수 있는 특정 고급 API에 사용되는 고유한 키가 필요하다. 두개의 atom이 같은 키를 갖는 것은 오류이기 때문에 키값은 전역적으로 고유하도록 해야한다. React 컴포넌트의 상태처럼 기본값도 가진다.
-          <br />
-          <br />
-          컴포넌트에서 atom을 읽고 쓰려면 useRecoilState라는 훅을 사용한다. React의 useState와 비슷하지만 상태가 컴포넌트 간에 공유될 수 있다는 차이가 있다.
-        </StyledContent>
-      </StyledArticle>
-      <BottomCTAButton onClick={() => router.push('/purchase')}>구매하기</BottomCTAButton>
+      <Suspense>
+        <ProductInfo productId={productId} />
+      </Suspense>
+      <BottomCTAButton onClick={() => router.push(`/order/${productId}`)}>구매하기</BottomCTAButton>
     </StyledContainer>
   )
 }
