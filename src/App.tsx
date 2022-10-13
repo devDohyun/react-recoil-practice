@@ -12,12 +12,7 @@ const App = () => {
     },
     {
       path: '/product',
-      children: [
-        {
-          path: ':id',
-          element: <PageProductDetail />,
-        },
-      ],
+      element: <PageProductDetail />,
     },
     {
       path: '/not-found',

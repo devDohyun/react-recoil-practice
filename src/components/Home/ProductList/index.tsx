@@ -12,7 +12,7 @@ const ProductList = () => {
   return (
     <StyledContainer>
       {products.map((item) => (
-        <Link key={item.id} to={`/product/${item.id}`}>
+        <Link key={item.id} to={{ pathname: '/product', search: `?id=${item.id}` }}>
           <ProductListItem item={item} />
         </Link>
       ))}

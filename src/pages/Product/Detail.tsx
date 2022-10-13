@@ -1,10 +1,11 @@
-import { useParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import ProductDetail from '../../components/ProductDetail'
 
 const PageProductDetail = () => {
-  const { id } = useParams()
+  const [searchParams] = useSearchParams()
+  const id = searchParams.get('id')
 
-  if (!id) return <></>
+  if (!id) return <>잘못된 접근입니다.</>
 
   return (
     <>
