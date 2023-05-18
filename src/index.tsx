@@ -5,7 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { server } from './server/browser'
 
-server.start()
+server.start({ onUnhandledRequest: 'bypass' })
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
