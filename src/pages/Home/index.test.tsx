@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react'
 import Home from '../../components/Home'
 import { renderWithBaseComponents } from '../../core/testUtils'
-import * as handlers from '../../models/handlers'
 import { TProduct } from '../../types'
+import * as remotes from '../../core/http/remotes'
 
 const mockProducts: TProduct[] = [
   {
@@ -16,11 +16,11 @@ const mockProducts: TProduct[] = [
   },
 ]
 
-jest.mock('../../models/handlers', () => ({ getProducts: jest.fn(() => Promise.resolve(mockProducts)) }))
+jest.mock('../../core/http/remotes', () => ({ getProducts: jest.fn(() => Promise.resolve(mockProducts)) }))
 
 describe('<Home />', () => {
   test('상품 목록이 잘 노출되나요?', async () => {
-    const spyOnGetProducts = jest.spyOn(handlers, 'getProducts')
+    const spyOnGetProducts = jest.spyOn(remotes, 'getProducts')
 
     renderWithBaseComponents(<Home />, { route: '/' })
 
