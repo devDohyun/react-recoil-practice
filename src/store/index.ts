@@ -1,6 +1,6 @@
 import { selector, selectorFamily } from 'recoil'
-import { getProductById, getProducts } from '../models'
 import { TProduct } from '../types'
+import { getProductById, getProducts } from '../core/http/remotes'
 
 export const productsQuery = selector({
   key: 'productsQuery',
